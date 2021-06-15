@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private float _gravity = 1.0f;
     [SerializeField]
     private float _jumpHeight = 15.0f;
+    private float _yVelocity;
+    private bool _canDoubleJump;
     void Start()
     {
         _controller = GetComponent<CharacterController>();
@@ -25,14 +27,21 @@ public class Player : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                velocity.y += _jumpHeight;
+                _yVelocity = _jumpHeight;
+                _canDoubleJump = true;
             }
             
         }
         else
         {
-            velocity.y -= _gravity;
+            if(Input.GetKeyDown(KeyCode.Space) && _canDoubleJump==true)
+            {
+                _yVelocity += _jumpHeight;
+                _canDoubleJump = false;
+            }
+            _yVelocity -= _gravity;
         }
+        velocity.y = _yVelocity;
         _controller.Move(velocity * Time.deltaTime);
        
     }
