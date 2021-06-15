@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
                 _yVelocity = _jumpHeight;
                 _canDoubleJump = true;
             }
-            
         }
         else
         {
@@ -43,6 +42,5 @@ public class Player : MonoBehaviour
         }
         velocity.y = _yVelocity;
         _controller.Move(velocity * Time.deltaTime);
-       
     }
 }
