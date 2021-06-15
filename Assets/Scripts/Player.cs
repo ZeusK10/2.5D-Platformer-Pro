@@ -20,12 +20,21 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if(_controller.enabled==true)
+        {
+            PlayerMovement();
+        }
+
+    }
+
+    void PlayerMovement()
+    {
         float horizontalInput = Input.GetAxis("Horizontal");
         Vector3 move = new Vector3(horizontalInput, 0, 0);
         Vector3 velocity = move * _speed;
-        if(_controller.isGrounded)
+        if (_controller.isGrounded)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 _yVelocity = _jumpHeight;
                 _canDoubleJump = true;
@@ -33,7 +42,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if(Input.GetKeyDown(KeyCode.Space) && _canDoubleJump==true)
+            if (Input.GetKeyDown(KeyCode.Space) && _canDoubleJump == true)
             {
                 _yVelocity += _jumpHeight;
                 _canDoubleJump = false;

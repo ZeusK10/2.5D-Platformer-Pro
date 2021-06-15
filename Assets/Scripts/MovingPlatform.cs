@@ -9,13 +9,11 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField]
     private float _speed=1.0f;
     private Vector3 _currentTarget;
-    // Start is called before the first frame update
     void Start()
     {
         _currentTarget = _targetB.position;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (transform.position == _targetA.position)

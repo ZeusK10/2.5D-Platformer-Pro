@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
         }
     }
     [SerializeField]
-    private Text _coinText;
+    private Text _coinText,_livesText;
     public int coinCount;
     
 
@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         _coinText.text = "Coin: " + coinCount;
+        _livesText.text = "Lives: " + GameManager.Instance.lives;
     }
 
 }
